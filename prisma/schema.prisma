@@ -9,3 +9,234 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id         String @id @default(cuid())
+  goodAction Int    @default(0)
+  email      String
+  hash       String
+  name       String
+  phone      String
+  address    String
+  avatar     String
+  background String
+
+  chats         Chat[]
+  messages      Message[]
+  notifications Notification[]
+  donations     Donation[]
+  ownStore      Store?         @relation("Own")
+  followStores  Store[]        @relation("Follow")
+  item_user     Item_User[]
+  orders        Order[]
+  feedbacks     Feedback[]
+  comments      Comment[]
+  createPosts   Post[]         @relation("Create")
+  likePosts     Post[]         @relation("Like")
+  savePosts     Post[]         @relation("Save")
+  giveGifts     Gift[]         @relation("Give")
+  receiveGifts  Gift[]         @relation("Receive")
+}
+
+model Chat {
+  id String @id @default(cuid())
+
+  users    User[]
+  messages Message[]
+}
+
+model Message {
+  id       String   @id @default(cuid())
+  createAt DateTime @default(now())
+  text     String
+
+  chat   Chat   @relation(fields: [chatId], references: [id])
+  chatId String
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+}
+
+model Notification {
+  id       String   @id @default(cuid())
+  createAt DateTime @default(now())
+  text     String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+}
+
+model Store {
+  id         String  @id @default(cuid())
+  follow     Int     @default(0)
+  sold       Int     @default(0)
+  star       Int     @default(0)
+  deleted    Boolean @default(false)
+  name       String
+  avatar     String
+  background String
+  address    String
+
+  donations Donation[]
+  owner     User       @relation(name: "Own", fields: [ownerId], references: [id])
+  ownerId   String     @unique
+  follower  User[]     @relation("Follow")
+  items     Item[]
+  orders    Order[]
+}
+
+model Donation {
+  id       String   @id @default(cuid())
+  createAt DateTime @default(now())
+  money    Int
+  text     String
+
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
+  store   Store  @relation(fields: [storeId], references: [id])
+  storeId String
+}
+
+model Item {
+  id          String    @id @default(cuid())
+  createAt    DateTime  @default(now())
+  sold        Int       @default(0)
+  star        Int       @default(0)
+  deleted     Boolean   @default(false)
+  stock       Int
+  name        String
+  description String
+  expired     DateTime?
+  images      String[]
+
+  store           Store            @relation(fields: [storeId], references: [id])
+  storeId         String
+  item_user       Item_User[]
+  item_order      Item_Order[]
+  category        Category         @relation(fields: [categoryId], references: [id])
+  categoryId      String
+  options         Option[]
+  shippingMethods ShippingMethod[]
+  feedbacks       Feedback[]
+}
+
+model Item_User {
+  amount Int
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  item   Item   @relation(fields: [itemId], references: [id])
+  itemId String
+
+  @@id([userId, itemId])
+}
+
+model Item_Order {
+  amount Int
+
+  order   Order  @relation(fields: [orderId], references: [id])
+  orderId String
+  item    Item   @relation(fields: [itemId], references: [id])
+  itemId  String
+
+  @@id([orderId, itemId])
+}
+
+model Order {
+  id       String   @id @default(cuid())
+  createAt DateTime @default(now())
+  status   String
+  note     String
+
+  user            User             @relation(fields: [userId], references: [id])
+  userId          String
+  item_order      Item_Order[]
+  store           Store            @relation(fields: [storeId], references: [id])
+  storeId         String
+  shippingMethods ShippingMethod[]
+}
+
+model Feedback {
+  id       String   @id @default(cuid())
+  createAt DateTime @default(now())
+  text     String
+  star     Int
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  item   Item   @relation(fields: [itemId], references: [id])
+  itemId String
+}
+
+model Category {
+  id   String @id @default(cuid())
+  name String
+
+  items   Item[]
+  filters Filter[]
+}
+
+model Filter {
+  id   String @id @default(cuid())
+  name String
+
+  categories Category[]
+  options    Option[]
+}
+
+model Option {
+  id   String @id @default(cuid())
+  name String
+
+  filter   Filter @relation(fields: [filterId], references: [id])
+  filterId String
+  items    Item[]
+}
+
+model ShippingMethod {
+  id   String @id @default(cuid())
+  name String
+
+  orders Order[]
+  items  Item[]
+}
+
+model Post {
+  id       String   @id @default(cuid())
+  createAt DateTime @default(now())
+  type     String
+  text     String
+  images   String[]
+
+  createUser   User      @relation(name: "Create", fields: [createUserId], references: [id])
+  createUserId String
+  likeUsers    User[]    @relation("Like")
+  saveUsers    User[]    @relation("Save")
+  comments     Comment[]
+  gifts        Gift[]
+}
+
+model Comment {
+  id       String   @id @default(cuid())
+  createAt DateTime @default(now())
+  text     String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String
+}
+
+model Gift {
+  id          String   @id @default(cuid())
+  createAt    DateTime @default(now())
+  status      String
+  description String
+  images      String[]
+
+  post          Post   @relation(fields: [postId], references: [id])
+  postId        String
+  giveUser      User   @relation(name: "Give", fields: [giveUserId], references: [id])
+  giveUserId    String
+  receiveUser   User   @relation(name: "Receive", fields: [receiveUserId], references: [id])
+  receiveUserId String
+}
