@@ -6,8 +6,8 @@ import { PrismaService } from '../prisma/prisma.service';
 export class CategoriesService {
   constructor(private prisma: PrismaService) {}
 
-  getAll() {
-    return this.prisma.category.findMany({
+  async getAll() {
+    return await this.prisma.category.findMany({
       include: {
         filters: {
           include: {

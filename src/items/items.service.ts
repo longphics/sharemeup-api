@@ -6,8 +6,8 @@ import { PrismaService } from '../prisma/prisma.service';
 export class ItemsService {
   constructor(private prisma: PrismaService) {}
 
-  getAll() {
-    return this.prisma.item.findMany({
+  async getAll() {
+    return await this.prisma.item.findMany({
       include: {
         store: true,
         category: true,

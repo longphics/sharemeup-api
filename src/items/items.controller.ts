@@ -7,7 +7,7 @@ export class ItemsController {
   constructor(private itemsService: ItemsService) {}
 
   @Get()
-  getAll() {
-    return this.itemsService.getAll();
+  async getAll() {
+    return await this.itemsService.getAll();
   }
 }
