@@ -94,10 +94,14 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'category4',
-        name: 'Items',
+        name: 'Shoes',
       },
       {
         id: 'category5',
+        name: 'Items',
+      },
+      {
+        id: 'category6',
         name: 'Others',
       },
     ];
@@ -132,6 +136,15 @@ export class PrismaService extends PrismaClient {
             },
           ],
         },
+        categories: {
+          connect: [
+            { id: 'category1' },
+            { id: 'category2' },
+            { id: 'category3' },
+            { id: 'category4' },
+            { id: 'category5' },
+          ],
+        },
       },
       {
         id: 'filter2',
@@ -147,6 +160,9 @@ export class PrismaService extends PrismaClient {
               name: 'false',
             },
           ],
+        },
+        categories: {
+          connect: [{ id: 'category1' }],
         },
       },
       {
@@ -164,6 +180,13 @@ export class PrismaService extends PrismaClient {
             },
           ],
         },
+        categories: {
+          connect: [
+            { id: 'category3' },
+            { id: 'category4' },
+            { id: 'category5' },
+          ],
+        },
       },
       {
         id: 'filter4',
@@ -178,6 +201,14 @@ export class PrismaService extends PrismaClient {
               id: 'option9',
               name: 'new',
             },
+          ],
+        },
+        categories: {
+          connect: [
+            { id: 'category3' },
+            { id: 'category4' },
+            { id: 'category5' },
+            { id: 'category6' },
           ],
         },
       },
@@ -198,6 +229,13 @@ export class PrismaService extends PrismaClient {
               id: 'option12',
               name: 'L',
             },
+          ],
+        },
+        categories: {
+          connect: [
+            { id: 'category3' },
+            { id: 'category4' },
+            { id: 'category5' },
           ],
         },
       },
