@@ -99,7 +99,7 @@ model Donation {
 model Item {
   id          String    @id @default(cuid())
   createAt    DateTime  @default(now())
-  sold        Int       @default(0)
+  sold        Int       @default(52)
   star        Int       @default(5)
   deleted     Boolean   @default(false)
   stock       Int
