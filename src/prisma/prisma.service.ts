@@ -23,7 +23,8 @@ export class PrismaService extends PrismaClient {
         name: 'Long Phi',
         phone: '0989016502',
         address: 'HCM',
-        avatar: 'www.google.com',
+        avatar:
+          'https://nhadepso.com/wp-content/uploads/2023/03/loa-mat-voi-101-hinh-anh-avatar-meo-cute-dang-yeu-dep-mat_3.jpg',
         background: 'www.google.com',
       },
       {
@@ -33,7 +34,8 @@ export class PrismaService extends PrismaClient {
         name: 'Minh Anh',
         phone: '0989016502',
         address: 'HCM',
-        avatar: 'www.google.com',
+        avatar:
+          'https://nhadepso.com/wp-content/uploads/2023/03/loa-mat-voi-101-hinh-anh-avatar-meo-cute-dang-yeu-dep-mat_2.jpg',
         background: 'www.google.com',
       },
       {
@@ -43,7 +45,8 @@ export class PrismaService extends PrismaClient {
         name: 'Sinh Nhut',
         phone: '0989016502',
         address: 'HCM',
-        avatar: 'www.google.com',
+        avatar:
+          'https://khoinguonsangtao.vn/wp-content/uploads/2022/08/hinh-nen-meo-hai-huoc-deo-kinh.jpg',
         background: 'www.google.com',
       },
     ];
@@ -289,6 +292,34 @@ export class PrismaService extends PrismaClient {
           ],
         },
         shippingMethods: { connect: [{ id: 'method1' }] },
+        feedbacks: {
+          create: [
+            {
+              id: 'feedback1(user1,item1)',
+              text: 'Very good, thank you so much!',
+              star: 5,
+              user: {
+                connect: { id: 'user1' },
+              },
+            },
+            {
+              id: 'feedback2(user2,item1)',
+              text: 'Pretty good, thanks a lot!',
+              star: 5,
+              user: {
+                connect: { id: 'user2' },
+              },
+            },
+            {
+              id: 'feedback3(user3,item1)',
+              text: 'I love it, thank you!',
+              star: 5,
+              user: {
+                connect: { id: 'user3' },
+              },
+            },
+          ],
+        },
       },
       {
         id: 'item2(store1)',
