@@ -64,6 +64,7 @@ export class PrismaService extends PrismaClient {
     const stores: Prisma.StoreCreateInput[] = [
       {
         id: 'store1(user1)',
+        follow: 52,
         name: 'Happy Meal Store',
         avatar:
           'https://img.freepik.com/free-vector/kawaii-hamburger-icon_24911-45312.jpg',
