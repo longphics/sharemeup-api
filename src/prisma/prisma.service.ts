@@ -65,8 +65,10 @@ export class PrismaService extends PrismaClient {
       {
         id: 'store1(user1)',
         name: 'Happy Meal Store',
-        avatar: 'www.google.com',
-        background: 'www.google.com',
+        avatar:
+          'https://img.freepik.com/free-vector/kawaii-hamburger-icon_24911-45312.jpg',
+        background:
+          'https://images.template.net/108716/food-blog-background-m1w5n.jpg',
         address: 'Ho Chi Minh',
         owner: { connect: { id: 'user1' } },
       },
