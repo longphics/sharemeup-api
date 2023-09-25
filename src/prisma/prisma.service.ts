@@ -22,7 +22,7 @@ export class PrismaService extends PrismaClient {
         hash: '12345',
         name: 'Long Phi',
         phone: '0989016502',
-        address: 'HCM',
+        address: 'Ho Chi Minh',
         avatar:
           'https://nhadepso.com/wp-content/uploads/2023/03/loa-mat-voi-101-hinh-anh-avatar-meo-cute-dang-yeu-dep-mat_3.jpg',
         background: 'www.google.com',
@@ -33,7 +33,7 @@ export class PrismaService extends PrismaClient {
         hash: '12345',
         name: 'Minh Anh',
         phone: '0989016502',
-        address: 'HCM',
+        address: 'Ho Chi Minh',
         avatar:
           'https://nhadepso.com/wp-content/uploads/2023/03/loa-mat-voi-101-hinh-anh-avatar-meo-cute-dang-yeu-dep-mat_2.jpg',
         background: 'www.google.com',
@@ -44,7 +44,7 @@ export class PrismaService extends PrismaClient {
         hash: '12345',
         name: 'Sinh Nhut',
         phone: '0989016502',
-        address: 'HCM',
+        address: 'Ho Chi Minh',
         avatar:
           'https://khoinguonsangtao.vn/wp-content/uploads/2022/08/hinh-nen-meo-hai-huoc-deo-kinh.jpg',
         background: 'www.google.com',
@@ -67,7 +67,7 @@ export class PrismaService extends PrismaClient {
         name: 'Happy Meal Store',
         avatar: 'www.google.com',
         background: 'www.google.com',
-        address: 'HCM',
+        address: 'Ho Chi Minh',
         owner: { connect: { id: 'user1' } },
       },
     ];
