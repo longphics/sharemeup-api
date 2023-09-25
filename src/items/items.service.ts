@@ -10,7 +10,11 @@ export class ItemsService {
     return await this.prisma.item.findMany({
       include: {
         store: true,
-        category: true,
+        category: {
+          include: {
+            filters: true,
+          },
+        },
         options: true,
         shippingMethods: true,
         feedbacks: {

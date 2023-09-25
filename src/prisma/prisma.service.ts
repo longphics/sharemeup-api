@@ -122,7 +122,7 @@ export class PrismaService extends PrismaClient {
     const filters: Prisma.FilterCreateInput[] = [
       {
         id: 'filter1',
-        name: 'age',
+        name: 'Age',
         options: {
           create: [
             {
@@ -151,16 +151,16 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'filter2',
-        name: 'vegetarian',
+        name: 'Vegetarian',
         options: {
           create: [
             {
               id: 'option4',
-              name: 'true',
+              name: 'yes',
             },
             {
               id: 'option5',
-              name: 'false',
+              name: 'no',
             },
           ],
         },
@@ -170,7 +170,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'filter3',
-        name: 'gender',
+        name: 'Gender',
         options: {
           create: [
             {
@@ -193,7 +193,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'filter4',
-        name: 'status',
+        name: 'Status',
         options: {
           create: [
             {
@@ -217,7 +217,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'filter5',
-        name: 'size',
+        name: 'Size',
         options: {
           create: [
             {
