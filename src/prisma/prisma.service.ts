@@ -274,6 +274,7 @@ export class PrismaService extends PrismaClient {
     const items: Prisma.ItemCreateInput[] = [
       {
         id: 'item1(store1)',
+        star: 5,
         stock: 10,
         name: 'Bún gạo xào chay',
         description: 'This is description.',
@@ -323,6 +324,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item2(store1)',
+        star: 4.8,
         stock: 10,
         name: 'Đậu hủ sốt cà',
         description: 'This is description.',
@@ -344,6 +346,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item3(store1)',
+        star: 3.8,
         stock: 10,
         name: 'Chả giò chay',
         description: 'This is description.',
@@ -365,6 +368,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item4(store1)',
+        star: 4,
         stock: 10,
         name: 'Bánh mì chả cá',
         description: 'This is description.',
@@ -386,6 +390,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item5(store1)',
+        star: 3.2,
         stock: 10,
         name: 'Cơm trộn hải sản',
         description: 'This is description.',
@@ -407,6 +412,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item6(store1)',
+        star: 2.9,
         stock: 10,
         name: 'Miến xào thập cẩm',
         description: 'This is description.',
@@ -428,6 +434,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item7(store1)',
+        star: 2.5,
         stock: 10,
         name: 'Cơm chay thập cẩm',
         description: 'This is description.',
@@ -449,6 +456,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item8(store1)',
+        star: 3,
         stock: 10,
         name: 'Cơm chiên trứng',
         description: 'This is description.',
@@ -470,6 +478,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item9(store1)',
+        star: 4.5,
         stock: 10,
         name: 'Nui xào chay',
         description: 'This is description.',
@@ -491,6 +500,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item10(store1)',
+        star: 5,
         stock: 10,
         name: 'Bún thịt nướng',
         description: 'This is description.',
@@ -512,6 +522,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item11(store1)',
+        star: 4.2,
         stock: 10,
         name: 'Bánh cuốn nóng',
         description: 'This is description.',
@@ -533,6 +544,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item12(store1)',
+        star: 3.6,
         stock: 10,
         name: 'Hủ tiếu chay',
         description: 'This is description.',
@@ -554,6 +566,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item13(store1)',
+        star: 4.9,
         stock: 10,
         name: 'Bộ quần áo bé trai',
         description: 'This is description.',
@@ -575,6 +588,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item14(store1)',
+        star: 4.5,
         stock: 10,
         name: 'Áo bông tay dài',
         description: 'This is description.',
@@ -596,6 +610,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item15(store1)',
+        star: 4.8,
         stock: 10,
         name: 'Áo thun nữ',
         description: 'This is description.',
@@ -617,6 +632,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item16(store1)',
+        star: 3.9,
         stock: 10,
         name: 'Đầm bé gái',
         description: 'This is description.',
@@ -638,6 +654,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item17(store1)',
+        star: 4.2,
         stock: 10,
         name: 'Áo sơ mi nam',
         description: 'This is description.',
@@ -659,6 +676,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item18(store1)',
+        star: 4.4,
         stock: 10,
         name: 'Áo thun nam',
         description: 'This is description.',
@@ -680,6 +698,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item19(store1)',
+        star: 4,
         stock: 10,
         name: 'Áo nam mùa hè',
         description: 'This is description.',
@@ -701,6 +720,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item20(store1)',
+        star: 5,
         stock: 10,
         name: 'Áo nữ đơn giản',
         description: 'This is description.',
@@ -722,6 +742,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item21(store1)',
+        star: 3.2,
         stock: 10,
         name: 'Áo hoodie nam',
         description: 'This is description.',
@@ -743,6 +764,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item22(store1)',
+        star: 2.5,
         stock: 10,
         name: 'Áo len tím',
         description: 'This is description.',
@@ -764,6 +786,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item23(store1)',
+        star: 4.5,
         stock: 10,
         name: 'Áo thun đơn giản',
         description: 'This is description.',
@@ -785,6 +808,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'item24(store1)',
+        star: 5,
         stock: 10,
         name: 'Áo sơ mi bé trai',
         description: 'This is description.',

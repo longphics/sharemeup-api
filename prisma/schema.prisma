@@ -69,7 +69,7 @@ model Store {
   id         String  @id @default(cuid())
   follow     Int     @default(0)
   sold       Int     @default(0)
-  star       Int     @default(5)
+  star       Float   @default(5)
   deleted    Boolean @default(false)
   name       String
   avatar     String
@@ -100,7 +100,7 @@ model Item {
   id          String    @id @default(cuid())
   createAt    DateTime  @default(now())
   sold        Int       @default(102)
-  star        Int       @default(5)
+  star        Float     @default(5)
   deleted     Boolean   @default(false)
   stock       Int
   name        String
