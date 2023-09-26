@@ -914,6 +914,126 @@ export class PrismaService extends PrismaClient {
     return res;
   }
 
+  private async _createOrders() {
+    const orders: Prisma.OrderCreateInput[] = [
+      {
+        id: 'order1(user3, store1)',
+        status: 'Waiting',
+        note: 'This is note',
+        user: { connect: { id: 'user3' } },
+        store: { connect: { id: 'store1(user1)' } },
+        item_order: {
+          create: [
+            {
+              amount: 2,
+              item: { connect: { id: 'item1(store1)' } },
+            },
+            {
+              amount: 3,
+              item: { connect: { id: 'item3(store1)' } },
+            },
+            {
+              amount: 1,
+              item: { connect: { id: 'item10(store1)' } },
+            },
+          ],
+        },
+      },
+      {
+        id: 'order2(user3, store2)',
+        status: 'Waiting',
+        note: 'This is note',
+        user: { connect: { id: 'user3' } },
+        store: { connect: { id: 'store2(user2)' } },
+        item_order: {
+          create: [
+            {
+              amount: 2,
+              item: { connect: { id: 'item2(store2)' } },
+            },
+          ],
+        },
+      },
+      {
+        id: 'order3(user3, store1)',
+        status: 'Taking',
+        note: 'This is note',
+        user: { connect: { id: 'user3' } },
+        store: { connect: { id: 'store1(user1)' } },
+        item_order: {
+          create: [
+            {
+              amount: 2,
+              item: { connect: { id: 'item3(store1)' } },
+            },
+            {
+              amount: 3,
+              item: { connect: { id: 'item5(store1)' } },
+            },
+            {
+              amount: 1,
+              item: { connect: { id: 'item6(store1)' } },
+            },
+          ],
+        },
+      },
+      {
+        id: 'order4(user3, store1)',
+        status: 'Completed',
+        note: 'This is note',
+        user: { connect: { id: 'user3' } },
+        store: { connect: { id: 'store1(user1)' } },
+        item_order: {
+          create: [
+            {
+              amount: 2,
+              item: { connect: { id: 'item11(store1)' } },
+            },
+            {
+              amount: 3,
+              item: { connect: { id: 'item12(store1)' } },
+            },
+            {
+              amount: 1,
+              item: { connect: { id: 'item13(store1)' } },
+            },
+          ],
+        },
+      },
+      {
+        id: 'order5(user3, store1)',
+        status: 'Canceled',
+        note: 'This is note',
+        user: { connect: { id: 'user3' } },
+        store: { connect: { id: 'store1(user1)' } },
+        item_order: {
+          create: [
+            {
+              amount: 2,
+              item: { connect: { id: 'item6(store1)' } },
+            },
+            {
+              amount: 3,
+              item: { connect: { id: 'item7(store1)' } },
+            },
+            {
+              amount: 1,
+              item: { connect: { id: 'item8(store1)' } },
+            },
+          ],
+        },
+      },
+    ];
+
+    const result: any[] = [];
+
+    for (const order of orders) {
+      result.push(await this.order.create({ data: order }));
+    }
+
+    return result;
+  }
+
   async init() {
     const users = await this._createUsers();
     const stores = await this._createStores();
@@ -922,6 +1042,7 @@ export class PrismaService extends PrismaClient {
     const shippingMethods = await this._createShippingMethods();
     const items = await this._createItems();
     const userWithCart = await this._createCart();
+    const orders = await this._createOrders();
 
     return {
       users,
@@ -931,6 +1052,7 @@ export class PrismaService extends PrismaClient {
       shippingMethods,
       items,
       userWithCart,
+      orders,
     };
   }
 }
