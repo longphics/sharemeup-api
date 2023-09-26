@@ -74,6 +74,18 @@ export class PrismaService extends PrismaClient {
         address: 'Ho Chi Minh',
         owner: { connect: { id: 'user1' } },
       },
+      {
+        id: 'store2(user2)',
+        follow: 52,
+        sold: 256,
+        name: 'Funny Store',
+        avatar:
+          'https://img.freepik.com/premium-vector/cute-burger-fried-potato-couple-concept-cartoon-character-illustration_296684-394.jpg',
+        background:
+          'https://images.template.net/108716/food-blog-background-m1w5n.jpg',
+        address: 'Ho Chi Minh',
+        owner: { connect: { id: 'user2' } },
+      },
     ];
 
     const result: any[] = [];
@@ -327,8 +339,8 @@ export class PrismaService extends PrismaClient {
         },
       },
       {
-        id: 'item2(store1)',
-        star: 4.8,
+        id: 'item2(store2)',
+        star: 4.9,
         stock: 10,
         name: 'Đậu hủ sốt cà',
         description: 'This is description.',
@@ -336,7 +348,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://www.hoidaubepaau.com/wp-content/uploads/2016/02/dau-hu-sot-ca-chua.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category1' } },
         options: {
           connect: [
@@ -347,6 +359,34 @@ export class PrismaService extends PrismaClient {
           ],
         },
         shippingMethods: { connect: [{ id: 'method1' }] },
+        feedbacks: {
+          create: [
+            {
+              id: 'feedback4(user1,item2)',
+              text: 'Very good, thank you so much!',
+              star: 5,
+              user: {
+                connect: { id: 'user1' },
+              },
+            },
+            {
+              id: 'feedback5(user2,item2)',
+              text: 'Pretty good, thanks a lot!',
+              star: 5,
+              user: {
+                connect: { id: 'user2' },
+              },
+            },
+            {
+              id: 'feedback6(user3,item2)',
+              text: 'I love it, thank you!',
+              star: 5,
+              user: {
+                connect: { id: 'user3' },
+              },
+            },
+          ],
+        },
       },
       {
         id: 'item3(store1)',
@@ -843,6 +883,37 @@ export class PrismaService extends PrismaClient {
     return result;
   }
 
+  private async _createCart() {
+    const res = await this.user.update({
+      where: {
+        id: 'user3',
+      },
+      data: {
+        item_user: {
+          create: [
+            {
+              amount: 2,
+              item: { connect: { id: 'item1(store1)' } },
+            },
+            {
+              amount: 3,
+              item: { connect: { id: 'item10(store1)' } },
+            },
+            {
+              amount: 1,
+              item: { connect: { id: 'item2(store2)' } },
+            },
+          ],
+        },
+      },
+      include: {
+        item_user: true,
+      },
+    });
+
+    return res;
+  }
+
   async init() {
     const users = await this._createUsers();
     const stores = await this._createStores();
@@ -850,6 +921,7 @@ export class PrismaService extends PrismaClient {
     const filters = await this._createFilters();
     const shippingMethods = await this._createShippingMethods();
     const items = await this._createItems();
+    const userWithCart = await this._createCart();
 
     return {
       users,
@@ -858,6 +930,7 @@ export class PrismaService extends PrismaClient {
       filters,
       shippingMethods,
       items,
+      userWithCart,
     };
   }
 }
