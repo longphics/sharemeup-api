@@ -917,7 +917,7 @@ export class PrismaService extends PrismaClient {
   private async _createOrders() {
     const orders: Prisma.OrderCreateInput[] = [
       {
-        id: 'order1(user3, store1)',
+        id: 'order1(user3,store1)',
         status: 'Waiting',
         note: 'This is note',
         user: { connect: { id: 'user3' } },
@@ -940,7 +940,7 @@ export class PrismaService extends PrismaClient {
         },
       },
       {
-        id: 'order2(user3, store2)',
+        id: 'order2(user3,store2)',
         status: 'Waiting',
         note: 'This is note',
         user: { connect: { id: 'user3' } },
@@ -955,7 +955,7 @@ export class PrismaService extends PrismaClient {
         },
       },
       {
-        id: 'order3(user3, store1)',
+        id: 'order3(user3,store1)',
         status: 'Taking',
         note: 'This is note',
         user: { connect: { id: 'user3' } },
@@ -978,7 +978,7 @@ export class PrismaService extends PrismaClient {
         },
       },
       {
-        id: 'order4(user3, store1)',
+        id: 'order4(user3,store1)',
         status: 'Completed',
         note: 'This is note',
         user: { connect: { id: 'user3' } },
@@ -1001,7 +1001,7 @@ export class PrismaService extends PrismaClient {
         },
       },
       {
-        id: 'order5(user3, store1)',
+        id: 'order5(user3,store1)',
         status: 'Canceled',
         note: 'This is note',
         user: { connect: { id: 'user3' } },
