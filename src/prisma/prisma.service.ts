@@ -979,7 +979,7 @@ export class PrismaService extends PrismaClient {
       },
       {
         id: 'order4(user3,store1)',
-        status: 'Completed',
+        status: 'Received',
         note: 'This is note',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store1(user1)' } },

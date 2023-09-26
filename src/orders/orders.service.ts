@@ -7,6 +7,20 @@ export class OrdersService {
   constructor(private prisma: PrismaService) {}
 
   async getAll() {
-    return await this.prisma.order.findMany();
+    return await this.prisma.order.findMany({
+      include: {
+        store: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+        item_order: {
+          include: {
+            item: true,
+          },
+        },
+      },
+    });
   }
 }
