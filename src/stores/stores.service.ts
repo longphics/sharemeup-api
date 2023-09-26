@@ -7,6 +7,10 @@ export class StoresService {
   constructor(private prisma: PrismaService) {}
 
   async getAll() {
-    return await this.prisma.store.findMany();
+    return await this.prisma.store.findMany({
+      include: {
+        owner: true,
+      },
+    });
   }
 }
