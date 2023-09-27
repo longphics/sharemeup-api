@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { User } from '@prisma/client';
 
 import { JwtGuard } from '../auth/guard';
@@ -19,5 +19,10 @@ export class UsersController {
   @Get('me')
   async getMe(@GetUser() user: User) {
     return await this.usersService.getMe(user.id);
+  }
+
+  @Post('cart')
+  updateCart() {
+    return;
   }
 }

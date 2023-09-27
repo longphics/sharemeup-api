@@ -88,21 +88,21 @@ CREATE TABLE "Item" (
 );
 
 -- CreateTable
-CREATE TABLE "Item_User" (
+CREATE TABLE "CartElement" (
     "amount" INTEGER NOT NULL,
     "userId" TEXT NOT NULL,
     "itemId" TEXT NOT NULL,
 
-    CONSTRAINT "Item_User_pkey" PRIMARY KEY ("userId","itemId")
+    CONSTRAINT "CartElement_pkey" PRIMARY KEY ("userId","itemId")
 );
 
 -- CreateTable
-CREATE TABLE "Item_Order" (
+CREATE TABLE "OrderElement" (
     "amount" INTEGER NOT NULL,
     "orderId" TEXT NOT NULL,
     "itemId" TEXT NOT NULL,
 
-    CONSTRAINT "Item_Order_pkey" PRIMARY KEY ("orderId","itemId")
+    CONSTRAINT "OrderElement_pkey" PRIMARY KEY ("orderId","itemId")
 );
 
 -- CreateTable
@@ -326,16 +326,16 @@ ALTER TABLE "Item" ADD CONSTRAINT "Item_storeId_fkey" FOREIGN KEY ("storeId") RE
 ALTER TABLE "Item" ADD CONSTRAINT "Item_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Item_User" ADD CONSTRAINT "Item_User_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "CartElement" ADD CONSTRAINT "CartElement_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Item_User" ADD CONSTRAINT "Item_User_itemId_fkey" FOREIGN KEY ("itemId") REFERENCES "Item"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "CartElement" ADD CONSTRAINT "CartElement_itemId_fkey" FOREIGN KEY ("itemId") REFERENCES "Item"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Item_Order" ADD CONSTRAINT "Item_Order_orderId_fkey" FOREIGN KEY ("orderId") REFERENCES "Order"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "OrderElement" ADD CONSTRAINT "OrderElement_orderId_fkey" FOREIGN KEY ("orderId") REFERENCES "Order"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Item_Order" ADD CONSTRAINT "Item_Order_itemId_fkey" FOREIGN KEY ("itemId") REFERENCES "Item"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "OrderElement" ADD CONSTRAINT "OrderElement_itemId_fkey" FOREIGN KEY ("itemId") REFERENCES "Item"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Order" ADD CONSTRAINT "Order_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

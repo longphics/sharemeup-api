@@ -883,13 +883,13 @@ export class PrismaService extends PrismaClient {
     return result;
   }
 
-  private async _createCart() {
+  private async _createCartElements() {
     const res = await this.user.update({
       where: {
         id: 'user3',
       },
       data: {
-        item_user: {
+        cartElements: {
           create: [
             {
               amount: 2,
@@ -907,14 +907,14 @@ export class PrismaService extends PrismaClient {
         },
       },
       include: {
-        item_user: true,
+        cartElements: true,
       },
     });
 
     return res;
   }
 
-  private async _createOrders() {
+  private async _createOrderElements() {
     const orders: Prisma.OrderCreateInput[] = [
       {
         id: 'order1(user3,store1)',
@@ -922,7 +922,7 @@ export class PrismaService extends PrismaClient {
         note: 'This is note',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store1(user1)' } },
-        item_order: {
+        orderElements: {
           create: [
             {
               amount: 2,
@@ -945,7 +945,7 @@ export class PrismaService extends PrismaClient {
         note: 'This is note',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store2(user2)' } },
-        item_order: {
+        orderElements: {
           create: [
             {
               amount: 2,
@@ -960,7 +960,7 @@ export class PrismaService extends PrismaClient {
         note: 'This is note',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store1(user1)' } },
-        item_order: {
+        orderElements: {
           create: [
             {
               amount: 2,
@@ -983,7 +983,7 @@ export class PrismaService extends PrismaClient {
         note: 'This is note',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store1(user1)' } },
-        item_order: {
+        orderElements: {
           create: [
             {
               amount: 2,
@@ -1006,7 +1006,7 @@ export class PrismaService extends PrismaClient {
         note: 'This is note',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store1(user1)' } },
-        item_order: {
+        orderElements: {
           create: [
             {
               amount: 2,
@@ -1041,8 +1041,8 @@ export class PrismaService extends PrismaClient {
     const filters = await this._createFilters();
     const shippingMethods = await this._createShippingMethods();
     const items = await this._createItems();
-    const userWithCart = await this._createCart();
-    const orders = await this._createOrders();
+    const cartElements = await this._createCartElements();
+    const orderElements = await this._createOrderElements();
 
     return {
       users,
@@ -1051,8 +1051,8 @@ export class PrismaService extends PrismaClient {
       filters,
       shippingMethods,
       items,
-      userWithCart,
-      orders,
+      cartElements,
+      orderElements,
     };
   }
 }

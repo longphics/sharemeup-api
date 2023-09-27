@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CartElement } from '@prisma/client';
 
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -9,7 +10,7 @@ export class UsersService {
   async getAll() {
     return await this.prisma.user.findMany({
       include: {
-        item_user: {
+        cartElements: {
           select: {
             amount: true,
             item: {
@@ -27,6 +28,14 @@ export class UsersService {
     return await this.prisma.user.findUnique({
       where: {
         id: id,
+      },
+    });
+  }
+
+  async updateCart(cartElements: CartElement[]) {
+    return await this.prisma.cartElement.deleteMany({
+      where: {
+        userId: cartElements[0].userId,
       },
     });
   }

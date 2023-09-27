@@ -21,7 +21,7 @@ export class OrdersService {
             name: true,
           },
         },
-        item_order: {
+        orderElements: {
           include: {
             item: true,
           },
