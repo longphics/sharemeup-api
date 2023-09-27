@@ -9,6 +9,12 @@ export class OrdersService {
   async getAll() {
     return await this.prisma.order.findMany({
       include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
         store: {
           select: {
             id: true,

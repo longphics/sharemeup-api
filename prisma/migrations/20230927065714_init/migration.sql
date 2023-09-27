@@ -248,6 +248,9 @@ CREATE TABLE "_Save" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Store_ownerId_key" ON "Store"("ownerId");
 
 -- CreateIndex
