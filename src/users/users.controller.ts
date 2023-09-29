@@ -15,10 +15,12 @@ export class UsersController {
     return await this.usersService.getAll();
   }
 
-  @UseGuards(JwtGuard)
+  // @UseGuards(JwtGuard)
   @Get('me')
   async getMe(@GetUser() user: User) {
-    return await this.usersService.getMe(user.id);
+    const userId = 'user3';
+
+    return await this.usersService.getMe(userId);
   }
 
   @Get('cart')

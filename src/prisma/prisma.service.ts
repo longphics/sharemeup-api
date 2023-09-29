@@ -920,6 +920,8 @@ export class PrismaService extends PrismaClient {
         id: 'order1(user3,store1)',
         status: 'Waiting',
         note: 'This is note',
+        phone: '0982212289',
+        address: 'Ho Chi Minh',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store1(user1)' } },
         orderElements: {
@@ -943,6 +945,8 @@ export class PrismaService extends PrismaClient {
         id: 'order2(user3,store2)',
         status: 'Waiting',
         note: 'This is note',
+        phone: '0982212289',
+        address: 'Ho Chi Minh',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store2(user2)' } },
         orderElements: {
@@ -958,6 +962,8 @@ export class PrismaService extends PrismaClient {
         id: 'order3(user3,store1)',
         status: 'Taking',
         note: 'This is note',
+        phone: '0982212289',
+        address: 'Ho Chi Minh',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store1(user1)' } },
         orderElements: {
@@ -981,6 +987,8 @@ export class PrismaService extends PrismaClient {
         id: 'order4(user3,store1)',
         status: 'Received',
         note: 'This is note',
+        phone: '0982212289',
+        address: 'Ho Chi Minh',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store1(user1)' } },
         orderElements: {
@@ -1004,6 +1012,8 @@ export class PrismaService extends PrismaClient {
         id: 'order5(user3,store1)',
         status: 'Canceled',
         note: 'This is note',
+        phone: '0982212289',
+        address: 'Ho Chi Minh',
         user: { connect: { id: 'user3' } },
         store: { connect: { id: 'store1(user1)' } },
         orderElements: {

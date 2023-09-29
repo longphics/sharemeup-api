@@ -146,6 +146,8 @@ model Order {
   createAt DateTime @default(now())
   status   String
   note     String
+  phone    String // New add
+  address  String // New add
 
   user            User             @relation(fields: [userId], references: [id])
   userId          String

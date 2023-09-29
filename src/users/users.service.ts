@@ -28,6 +28,9 @@ export class UsersService {
       where: {
         id: id,
       },
+      include: {
+        ownStore: true,
+      },
     });
   }
 

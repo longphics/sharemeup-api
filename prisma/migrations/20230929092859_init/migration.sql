@@ -111,6 +111,8 @@ CREATE TABLE "Order" (
     "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "status" TEXT NOT NULL,
     "note" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
+    "address" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "storeId" TEXT NOT NULL,
 
