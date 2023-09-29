@@ -18,7 +18,7 @@ export class UsersController {
   // @UseGuards(JwtGuard)
   @Get('me')
   async getMe(@GetUser() user: User) {
-    const userId = 'user3';
+    const userId = 'user2';
 
     return await this.usersService.getMe(userId);
   }
