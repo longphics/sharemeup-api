@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CartElement } from '@prisma/client';
 
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -32,11 +31,53 @@ export class UsersService {
     });
   }
 
-  async updateCart(cartElements: CartElement[]) {
-    return await this.prisma.cartElement.deleteMany({
+  async getCart(userId: string) {
+    const res = await this.prisma.user.findUnique({
       where: {
-        userId: cartElements[0].userId,
+        id: userId,
+      },
+      select: {
+        cartElements: {
+          select: {
+            amount: true,
+            item: {
+              select: {
+                id: true,
+              },
+            },
+          },
+        },
       },
     });
+
+    const cartElements = res.cartElements.map((cartElement) => ({
+      amount: cartElement.amount,
+      itemId: cartElement.item.id,
+    }));
+
+    return cartElements;
+  }
+
+  async updateCart(userId: string, cartElements: any[]) {
+    await this.prisma.cartElement.deleteMany({
+      where: {
+        userId,
+      },
+    });
+
+    if (cartElements.length === 0) {
+      return await this.getCart(userId);
+    }
+
+    const data = cartElements.map((cartElement) => ({
+      ...cartElement,
+      userId,
+    }));
+
+    await this.prisma.cartElement.createMany({
+      data,
+    });
+
+    return await this.getCart(userId);
   }
 }
