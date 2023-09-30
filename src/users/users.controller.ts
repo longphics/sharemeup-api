@@ -1,4 +1,11 @@
-import { Controller, Get, Body, Post, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Body,
+  Post,
+  UseGuards,
+  BadRequestException,
+} from '@nestjs/common';
 import { User } from '@prisma/client';
 
 import { JwtGuard } from '../auth/guard';
@@ -15,25 +22,28 @@ export class UsersController {
     return await this.usersService.getAll();
   }
 
-  // @UseGuards(JwtGuard)
+  @UseGuards(JwtGuard)
   @Get('me')
   async getMe(@GetUser() user: User) {
-    const userId = 'user2';
+    const userId = user.id;
+
+    // const userId = 'user3';
 
     return await this.usersService.getMe(userId);
   }
 
-  @Get('cart')
-  async getCart(@GetUser() user: User) {
-    const userId = 'user3';
-
-    return await this.usersService.getCart(userId);
-  }
-
+  // Done
+  @UseGuards(JwtGuard)
   @Post('cart')
   async updateCart(@GetUser() user: User, @Body() dto: UpdateCartDto) {
-    const userId = 'user3';
+    const userId = user.id;
+    const itemId = dto.itemId;
+    const amount = dto.amount;
 
-    return await this.usersService.updateCart(userId, dto.cartElements);
+    try {
+      return await this.usersService.updateCart(userId, itemId, amount);
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 }

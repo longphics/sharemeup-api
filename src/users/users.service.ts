@@ -30,57 +30,62 @@ export class UsersService {
       },
       include: {
         ownStore: true,
-      },
-    });
-  }
-
-  async getCart(userId: string) {
-    const res = await this.prisma.user.findUnique({
-      where: {
-        id: userId,
-      },
-      select: {
         cartElements: {
           select: {
             amount: true,
             item: {
-              select: {
-                id: true,
+              include: {
+                store: true,
               },
             },
           },
         },
       },
     });
-
-    const cartElements = res.cartElements.map((cartElement) => ({
-      amount: cartElement.amount,
-      itemId: cartElement.item.id,
-    }));
-
-    return cartElements;
   }
 
-  async updateCart(userId: string, cartElements: any[]) {
-    await this.prisma.cartElement.deleteMany({
+  // Done
+  async updateCart(userId: string, itemId: string, amount: number) {
+    if (!amount) {
+      return await this.prisma.cartElement.delete({
+        where: {
+          userId_itemId: {
+            userId,
+            itemId,
+          },
+        },
+      });
+    }
+
+    const cartElements = await this.prisma.cartElement.findUnique({
       where: {
-        userId,
+        userId_itemId: {
+          userId,
+          itemId,
+        },
       },
     });
 
-    if (cartElements.length === 0) {
-      return await this.getCart(userId);
+    if (!cartElements) {
+      return await this.prisma.cartElement.create({
+        data: {
+          amount,
+          user: { connect: { id: userId } },
+          item: { connect: { id: itemId } },
+        },
+      });
+    } else {
+      return await this.prisma.cartElement.update({
+        where: {
+          userId_itemId: {
+            userId,
+            itemId,
+          },
+        },
+        data: {
+          amount,
+        },
+      });
     }
-
-    const data = cartElements.map((cartElement) => ({
-      ...cartElement,
-      userId,
-    }));
-
-    await this.prisma.cartElement.createMany({
-      data,
-    });
-
-    return await this.getCart(userId);
   }
 }

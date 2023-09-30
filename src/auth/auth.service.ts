@@ -56,17 +56,21 @@ export class AuthService {
       throw new ForbiddenException('Credentials incorrect');
     }
 
-    ////////////
-    if (user.hash === dto.password) {
-      return this._signToken(user.id, user.email);
-    }
+    try {
+      ////////////
+      if (user.hash === dto.password) {
+        return this._signToken(user.id, user.email);
+      }
 
-    const pwMatches = await argon.verify(user.hash, dto.password);
-    if (!pwMatches) {
+      const pwMatches = await argon.verify(user.hash, dto.password);
+      if (!pwMatches) {
+        throw new ForbiddenException('Credentials incorrect');
+      }
+
+      return this._signToken(user.id, user.email);
+    } catch (err) {
       throw new ForbiddenException('Credentials incorrect');
     }
-
-    return this._signToken(user.id, user.email);
   }
 
   private async _signToken(userId: string, email: string) {
