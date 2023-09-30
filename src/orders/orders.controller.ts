@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  UseGuards,
+  BadRequestException,
+} from '@nestjs/common';
 import { User } from '@prisma/client';
 
 import { JwtGuard } from '../auth/guard';
@@ -9,22 +16,34 @@ import { OrdersService } from './orders.service';
 export class OrdersController {
   constructor(private ordersService: OrdersService) {}
 
+  // Done
   @Get()
   async getAll() {
-    return await this.ordersService.getAll();
+    try {
+      return await this.ordersService.getAll();
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 
+  // Done
   @UseGuards(JwtGuard)
   @Post('create')
   async create(@GetUser() user: User, @Body() dto: any) {
-    const userId = user.id;
-    // const userId = 'user3';
-
-    const storeId = dto.storeId;
-    const phone = dto.phone;
-    const address = dto.address;
-
-    return await this.ordersService.create(userId, storeId, phone, address);
+    try {
+      const userId = user.id;
+      const storeId = dto.storeId;
+      const phone = dto.phone;
+      const address = dto.address;
+      return await this.ordersService.create({
+        userId,
+        storeId,
+        phone,
+        address,
+      });
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 
   @Post('status')

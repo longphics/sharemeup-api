@@ -5,11 +5,17 @@ import {
   UploadedFile,
   UseInterceptors,
   Body,
+  BadRequestException,
+  UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { ConfigService } from '@nestjs/config';
+import { User } from '@prisma/client';
+
+import { JwtGuard } from '../auth/guard';
+import { GetUser } from '../auth/decorator';
 
 import { ItemsService } from './items.service';
 
@@ -20,11 +26,18 @@ export class ItemsController {
     private config: ConfigService,
   ) {}
 
+  // Done
   @Get()
   async getAll() {
-    return await this.itemsService.getAll();
+    try {
+      return await this.itemsService.getAll();
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 
+  // Done
+  @UseGuards(JwtGuard)
   @Post('create')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -41,11 +54,30 @@ export class ItemsController {
       }),
     }),
   )
-  async create(@UploadedFile() file: any, @Body() dto: any) {
-    const userId = 'user2';
+  async create(
+    @GetUser() user: User,
+    @UploadedFile() file: any,
+    @Body() dto: any,
+  ) {
+    try {
+      const userId = user.id;
 
-    const imageUri = this.config.get('BACKEND_URL') + '/' + file.filename;
+      const imageUri = this.config.get('BACKEND_URL') + '/' + file.filename;
 
-    return await this.itemsService.create(userId, dto, imageUri);
+      const props = {
+        userId,
+        stock: parseInt(dto.stock),
+        name: dto.name,
+        description: dto.description,
+        expired: new Date(dto.dateString),
+        imageUri,
+        categoryId: dto.categoryId,
+        optionIds: dto.options.split(','),
+      };
+
+      return await this.itemsService.create(props);
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 }

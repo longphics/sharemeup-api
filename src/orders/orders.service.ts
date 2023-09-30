@@ -6,38 +6,41 @@ import { PrismaService } from '../prisma/prisma.service';
 export class OrdersService {
   constructor(private prisma: PrismaService) {}
 
+  // Done
   async getAll() {
     return await this.prisma.order.findMany({
-      include: {
-        user: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
-        store: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
+      select: {
+        id: true,
+        createAt: true,
+        status: true,
+        note: true,
+        phone: true,
+        address: true,
+        userId: true,
+        storeId: true,
         orderElements: {
-          include: {
-            item: true,
+          select: {
+            amount: true,
+            orderId: true,
+            itemId: true,
           },
         },
       },
     });
   }
 
-  async create(
-    userId: string,
-    storeId: string,
-    phone: string,
-    address: string,
-  ) {
-    // cartItems tuong ung
-
+  // Done
+  async create({
+    userId,
+    storeId,
+    phone,
+    address,
+  }: {
+    userId: string;
+    storeId: string;
+    phone: string;
+    address: string;
+  }) {
     const cartElements = await this.prisma.cartElement.findMany({
       where: {
         userId: userId,

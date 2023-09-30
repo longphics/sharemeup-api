@@ -6,32 +6,78 @@ import { PrismaService } from '../prisma/prisma.service';
 export class ItemsService {
   constructor(private prisma: PrismaService) {}
 
+  // Done
   async getAll() {
     return await this.prisma.item.findMany({
-      include: {
-        store: true,
+      select: {
+        id: true,
+        createAt: true,
+        sold: true,
+        star: true,
+        stock: true,
+        name: true,
+        description: true,
+        expired: true,
+        images: true,
+        storeId: true,
         category: {
-          include: {
-            filters: true,
-          },
-        },
-        options: true,
-        shippingMethods: true,
-        feedbacks: {
-          include: {
-            user: {
+          select: {
+            id: true,
+            name: true,
+            filters: {
               select: {
+                id: true,
                 name: true,
-                avatar: true,
               },
             },
+          },
+        },
+        options: {
+          select: {
+            id: true,
+            name: true,
+            filterId: true,
+          },
+        },
+        shippingMethods: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+        feedbacks: {
+          select: {
+            id: true,
+            createAt: true,
+            text: true,
+            star: true,
+            userId: true,
           },
         },
       },
     });
   }
 
-  async create(userId: string, dto: any, imageUri: string) {
+  // Done
+  async create({
+    userId,
+    stock,
+    name,
+    description,
+    expired,
+    imageUri,
+    categoryId,
+    optionIds,
+  }: {
+    userId: string;
+    stock: number;
+    name: string;
+    description: string;
+    expired: Date;
+    imageUri: string;
+    categoryId: string;
+    optionIds: string[];
+  }) {
     const store = await this.prisma.store.findUnique({
       where: {
         ownerId: userId,
@@ -40,25 +86,22 @@ export class ItemsService {
         id: true,
       },
     });
+
     const storeId = store.id;
 
-    const options = dto.options.split(',');
-
     const newItem = {
-      stock: parseInt(dto.stock),
-      name: dto.name,
-      description: dto.description,
-      expired: new Date(dto.dateString),
+      stock: stock,
+      name: name,
+      description: description,
+      expired: expired,
       images: [imageUri],
       store: { connect: { id: storeId } },
-      category: { connect: { id: dto.categoryId } },
+      category: { connect: { id: categoryId } },
       options: {
-        connect: options.map((option: string) => ({ id: option })),
+        connect: optionIds.map((optionId: string) => ({ id: optionId })),
       },
     };
 
-    const res = await this.prisma.item.create({ data: newItem });
-
-    return res;
+    return await this.prisma.item.create({ data: newItem });
   }
 }

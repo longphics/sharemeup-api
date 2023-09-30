@@ -17,31 +17,37 @@ import { UpdateCartDto } from './dtos';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
+  // Done
   @Get()
   async getAll() {
-    return await this.usersService.getAll();
+    try {
+      return await this.usersService.getAll();
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 
+  // Done
   @UseGuards(JwtGuard)
   @Get('me')
   async getMe(@GetUser() user: User) {
-    const userId = user.id;
-
-    // const userId = 'user3';
-
-    return await this.usersService.getMe(userId);
+    try {
+      const userId = user.id;
+      return await this.usersService.getMe({ userId });
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 
   // Done
   @UseGuards(JwtGuard)
   @Post('cart')
   async updateCart(@GetUser() user: User, @Body() dto: UpdateCartDto) {
-    const userId = user.id;
-    const itemId = dto.itemId;
-    const amount = dto.amount;
-
     try {
-      return await this.usersService.updateCart(userId, itemId, amount);
+      const userId = user.id;
+      const itemId = dto.itemId;
+      const amount = dto.amount;
+      return await this.usersService.updateCart({ userId, itemId, amount });
     } catch (err) {
       throw new BadRequestException(err);
     }

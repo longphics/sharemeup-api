@@ -8,10 +8,19 @@ export class CategoriesService {
 
   async getAll() {
     return await this.prisma.category.findMany({
-      include: {
+      select: {
+        id: true,
+        name: true,
         filters: {
-          include: {
-            options: true,
+          select: {
+            id: true,
+            name: true,
+            options: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
           },
         },
       },

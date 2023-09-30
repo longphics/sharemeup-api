@@ -312,15 +312,7 @@ export class PrismaService extends PrismaClient {
         feedbacks: {
           create: [
             {
-              id: 'feedback1(user1,item1)',
-              text: 'Very good, thank you so much!',
-              star: 5,
-              user: {
-                connect: { id: 'user1' },
-              },
-            },
-            {
-              id: 'feedback2(user2,item1)',
+              id: 'feedback1(user2,item1)',
               text: 'Pretty good, thanks a lot!',
               star: 5,
               user: {
@@ -328,7 +320,7 @@ export class PrismaService extends PrismaClient {
               },
             },
             {
-              id: 'feedback3(user3,item1)',
+              id: 'feedback2(user3,item1)',
               text: 'I love it, thank you!',
               star: 5,
               user: {
@@ -339,7 +331,7 @@ export class PrismaService extends PrismaClient {
         },
       },
       {
-        id: 'item2(store2)',
+        id: 'item2(store1)',
         star: 4.9,
         stock: 10,
         name: 'Đậu hủ sốt cà',
@@ -348,7 +340,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://www.hoidaubepaau.com/wp-content/uploads/2016/02/dau-hu-sot-ca-chua.jpg',
         ],
-        store: { connect: { id: 'store2(user2)' } },
+        store: { connect: { id: 'store1(user1)' } },
         category: { connect: { id: 'category1' } },
         options: {
           connect: [
@@ -362,15 +354,7 @@ export class PrismaService extends PrismaClient {
         feedbacks: {
           create: [
             {
-              id: 'feedback4(user1,item2)',
-              text: 'Very good, thank you so much!',
-              star: 5,
-              user: {
-                connect: { id: 'user1' },
-              },
-            },
-            {
-              id: 'feedback5(user2,item2)',
+              id: 'feedback3(user2,item2)',
               text: 'Pretty good, thanks a lot!',
               star: 5,
               user: {
@@ -378,7 +362,7 @@ export class PrismaService extends PrismaClient {
               },
             },
             {
-              id: 'feedback6(user3,item2)',
+              id: 'feedback4(user3,item2)',
               text: 'I love it, thank you!',
               star: 5,
               user: {
@@ -609,7 +593,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item13(store1)',
+        id: 'item13(store2)',
         star: 4.9,
         stock: 10,
         name: 'Bộ quần áo bé trai',
@@ -618,7 +602,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/719875171574779.6470b6ef6209f.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -629,9 +613,29 @@ export class PrismaService extends PrismaClient {
           ],
         },
         shippingMethods: { connect: [{ id: 'method1' }] },
+        feedbacks: {
+          create: [
+            {
+              id: 'feedback5(user3,item1)',
+              text: 'I love it, thank you!',
+              star: 5,
+              user: {
+                connect: { id: 'user3' },
+              },
+            },
+            {
+              id: 'feedback6(user1,item1)',
+              text: 'So beautiful, thank you so much!',
+              star: 5,
+              user: {
+                connect: { id: 'user1' },
+              },
+            },
+          ],
+        },
       },
       {
-        id: 'item14(store1)',
+        id: 'item14(store2)',
         star: 4.5,
         stock: 10,
         name: 'Áo bông tay dài',
@@ -640,7 +644,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/fs/271579174360449.64a14fad788e1.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -651,9 +655,29 @@ export class PrismaService extends PrismaClient {
           ],
         },
         shippingMethods: { connect: [{ id: 'method1' }] },
+        feedbacks: {
+          create: [
+            {
+              id: 'feedback7(user3,item1)',
+              text: 'I love it, thank you!',
+              star: 5,
+              user: {
+                connect: { id: 'user3' },
+              },
+            },
+            {
+              id: 'feedback8(user1,item1)',
+              text: 'So beautiful, thank you so much!',
+              star: 5,
+              user: {
+                connect: { id: 'user1' },
+              },
+            },
+          ],
+        },
       },
       {
-        id: 'item15(store1)',
+        id: 'item15(store2)',
         star: 4.8,
         stock: 10,
         name: 'Áo thun nữ',
@@ -662,7 +686,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://product.hstatic.net/1000284478/product/3_7944962003_5_ef85f8b6c5f544e39153b26f7d50c3f4_master.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -675,7 +699,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item16(store1)',
+        id: 'item16(store2)',
         star: 3.9,
         stock: 10,
         name: 'Đầm bé gái',
@@ -684,7 +708,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/fs/74fb52113072637.6020f2fbeacae.png',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -697,7 +721,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item17(store1)',
+        id: 'item17(store2)',
         star: 4.2,
         stock: 10,
         name: 'Áo sơ mi nam',
@@ -706,7 +730,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/fs/c8f8d2134793773.61dc818fa7157.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -719,7 +743,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item18(store1)',
+        id: 'item18(store2)',
         star: 4.4,
         stock: 10,
         name: 'Áo thun nam',
@@ -728,7 +752,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/e6d8c2175903151.64bb8f181ff56.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -741,7 +765,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item19(store1)',
+        id: 'item19(store2)',
         star: 4,
         stock: 10,
         name: 'Áo nam mùa hè',
@@ -750,7 +774,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/74f862169348225.644ac3485f00e.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -763,7 +787,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item20(store1)',
+        id: 'item20(store2)',
         star: 5,
         stock: 10,
         name: 'Áo nữ đơn giản',
@@ -772,7 +796,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/fs/5f6fec172031623.64784f7b1aac0.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -785,7 +809,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item21(store1)',
+        id: 'item21(store2)',
         star: 3.2,
         stock: 10,
         name: 'Áo hoodie nam',
@@ -794,7 +818,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/fs/7a1dba150111441.62f3c6637b3f0.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -807,7 +831,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item22(store1)',
+        id: 'item22(store2)',
         star: 2.5,
         stock: 10,
         name: 'Áo len tím',
@@ -816,7 +840,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/2cc21f169299275.644a2937799c2.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -829,7 +853,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item23(store1)',
+        id: 'item23(store2)',
         star: 4.5,
         stock: 10,
         name: 'Áo thun đơn giản',
@@ -838,7 +862,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/31e36f175903281.64bb8ff813169.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -851,7 +875,7 @@ export class PrismaService extends PrismaClient {
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
       {
-        id: 'item24(store1)',
+        id: 'item24(store2)',
         star: 5,
         stock: 10,
         name: 'Áo sơ mi bé trai',
@@ -860,7 +884,7 @@ export class PrismaService extends PrismaClient {
         images: [
           'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/7402dd171688511.6473296c90101.jpg',
         ],
-        store: { connect: { id: 'store1(user1)' } },
+        store: { connect: { id: 'store2(user2)' } },
         category: { connect: { id: 'category3' } },
         options: {
           connect: [
@@ -869,6 +893,932 @@ export class PrismaService extends PrismaClient {
             { id: 'option8' },
             { id: 'option10' },
           ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item25(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Khăn cổ cho bé',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://vn-test-11.slatic.net/p/468586e15002c9089b64d245591bcb39.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option1' },
+            { id: 'option7' },
+            { id: 'option10' },
+            { id: 'option8' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item26(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Mũ len',
+        description: 'This is description.',
+        expired: new Date(),
+        images: ['https://cf.shopee.vn/file/13adb10bf67947e5f83b08aff2f38f29'],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option3' },
+            { id: 'option6' },
+            { id: 'option11' },
+            { id: 'option9' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item27(store2)',
+        star: 4.9,
+        stock: 10,
+        name: 'Nón kết',
+        description: 'This is description.',
+        expired: new Date(),
+        images: ['https://ananas.vn/wp-content/uploads/Pro_ABC006_1.jpeg'],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option6' },
+            { id: 'option12' },
+            { id: 'option1' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item28(store2)',
+        star: 4.8,
+        stock: 10,
+        name: 'Vớ cho bé',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/77c703168394473.64431d436b2a4.png',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option1' },
+            { id: 'option7' },
+            { id: 'option9' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item29(store2)',
+        star: 3.2,
+        stock: 10,
+        name: 'Set găng tay cho bé',
+        description: 'This is description.',
+        expired: new Date(),
+        images: ['https://cf.shopee.vn/file/4a57d8fb90512b71b2372ebc881ac604'],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option1' },
+            { id: 'option6' },
+            { id: 'option8' },
+            { id: 'option11' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item30(store2)',
+        star: 3,
+        stock: 10,
+        name: 'Túi xách nữ',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://pos.nvncdn.net/22d473-45885/ps/content/20230314_CeBGXmM1RbB2.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option8' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item31(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Cặp đi học nữ',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://down-vn.img.susercontent.com/file/3e71e7e19373bbdfe775dfd1aba741d9',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option9' },
+            { id: 'option11' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item32(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Cặp đi học nam',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://down-vn.img.susercontent.com/file/43bd804c490755e91e09d8f19049bf13',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option6' },
+            { id: 'option8' },
+            { id: 'option12' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item33(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Nón cói',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lj067kjflmoc4d',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option9' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item34(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Balo đi học',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://down-vn.img.susercontent.com/file/0acf3eb9d318ae3a064f240e82d92c5b_tn',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option6' },
+            { id: 'option8' },
+            { id: 'option12' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item35(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Khăn choàng cổ',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://khanchoangthieuhoa.com/wp-content/uploads/2021/08/khan-choang-co-6.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option3' },
+            { id: 'option7' },
+            { id: 'option9' },
+            { id: 'option11' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item36(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Túi tote',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/c068ba171381133.646ddef74804e.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category5' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option8' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item37(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa tươi ít đường',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/78a14f174844807.64abdd0a0b899.jpg',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }, { id: 'option2' }, { id: 'option3' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item38(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa tươi Dalat',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/c1a289108238411.5fb942a1a4760.jpg',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }, { id: 'option2' }, { id: 'option3' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item39(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa dâu tây',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/7c6f9e153748703.633547954711a.png',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }, { id: 'option2' }, { id: 'option3' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item40(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa chua trái cây',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/c3d1aa134529539.61d7349a73d21.jpg',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }, { id: 'option2' }, { id: 'option3' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item41(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa lúa mạch',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/a8de5f172256633.647c73c53027b.jpg',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }, { id: 'option2' }, { id: 'option3' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item42(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa ngũ cốc',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://frutonanny.com.vn/wp-content/uploads/2022/11/sua-dem-hon-hop-ngu-coc-dao-2.png-scaled.jpg',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item43(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa TH true milk',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/4004cf127243793.613e38caac483.jpg',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }, { id: 'option2' }, { id: 'option3' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item44(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa tươi đóng chai',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/b9d9cf150363613.62f9025be2132.jpg',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }, { id: 'option2' }, { id: 'option3' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item45(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Nước ép thơm',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/12267e94384799.5e7d52d9b109a.jpg',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }, { id: 'option3' }, { id: 'option2' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item46(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Nước ép trái cây',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/fcdf8c174794413.64a8471405375.png',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }, { id: 'option2' }, { id: 'option3' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item47(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa cho người cao tuổi',
+        description: 'This is description.',
+        expired: new Date(),
+        images: ['https://media.loveitopcdn.com/21179/thumb/dsc072086882.jpg'],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option3' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item48(store1)',
+        star: 5,
+        stock: 10,
+        name: 'Sữa cho bé',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/77a000135932531.61f070b21ca8e.jpg',
+        ],
+        store: { connect: { id: 'store1(user1)' } },
+        category: { connect: { id: 'category2' } },
+        options: {
+          connect: [{ id: 'option1' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item49(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày thể thao nam',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/74a27b175297997.64b1041b244f3.png',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option6' },
+            { id: 'option8' },
+            { id: 'option11' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item50(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày thể thao nữ',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/7936f0148100689.62cf2b81b8e74.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option9' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item51(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày cho bé trai',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/06d226144799347.636f9dbd8e84e.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option6' },
+            { id: 'option8' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item52(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày cho bé gái',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/356852144799347.629306c838737.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option8' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item53(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày bata nữ',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/407c0f154929143.634b250090136.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option8' },
+            { id: 'option11' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item54(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày chạy bộ nam',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/2eecf0171247339.646bcc6eab58a.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option6' },
+            { id: 'option9' },
+            { id: 'option12' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item55(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Dép nhựa nam',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/946881129003583.6161d0d5cc71d.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option6' },
+            { id: 'option8' },
+            { id: 'option11' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item56(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Dép nhựa',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/201611151705691.63109e547a56d.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option9' },
+            { id: 'option12' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item57(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày sandal nữ',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/ed06ee172853917.6486d5522aafe.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option8' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item58(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày da cho bé',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/0f5928103783015.5f54e1462d6ac.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option1' },
+            { id: 'option6' },
+            { id: 'option8' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item59(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày da nữ',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/db76d3157998797.6383c2b937d05.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option7' },
+            { id: 'option9' },
+            { id: 'option10' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item60(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Giày da nam',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/f55663115745281.60541210c7a08.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category4' } },
+        options: {
+          connect: [
+            { id: 'option2' },
+            { id: 'option6' },
+            { id: 'option9' },
+            { id: 'option11' },
+          ],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item61(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Nước mắm Nam Ngư',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://tieudungchatluong.net/wp-content/uploads/2021/09/nam-ngu-chai-thuy-tinh-moi.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option9' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item62(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Dầu ăn Tường An',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://www.tuongan.com.vn/public/uploads/2019/CookingOil_3.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option9' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item63(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Nước tương Chinsu',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://image-us.eva.vn/upload/3-2021/images/2021-07-20/1626773692-176-thumbnail-width640height480.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option9' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item64(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Bánh bông lan',
+        description: 'This is description.',
+        expired: new Date(),
+        images: ['https://cf.shopee.vn/file/1a81688114c2736717b150bd51247acf'],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option9' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item65(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Túi gạo 5kg',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/fs/246a5b128908557.615f9eeacd5a5.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option9' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item66(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Bộ chén đĩa',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://cf.shopee.vn/file/bba46dd9e43e9fce0b2157fc68d9d0cb_tn',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option9' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item67(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Bộ sách lớp 3',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://bcp.cdnchinhphu.vn/334894974524682240/2022/4/27/272170396-367731691856468-9213076374666582325-n-6545-16510445341741251515485.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option8' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item68(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Bộ sách lớp 6',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://cdn.tuoitre.vn/thumb_w/640/2022/11/4/sgk-moi-1-16675240054552586592.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option8' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item69(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Bộ dụng cụ học tập',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://bizweb.dktcdn.net/100/299/021/products/xanh-duong.jpg?v=1629380681700',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option9' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item70(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Mền bông mịn',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://bizweb.dktcdn.net/100/278/597/products/img-4603.jpg?v=1678449508867',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option9' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item71(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Quạt điện',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://mivietnam.vn/wp-content/uploads/2023/06/mivietnam-quat-luu-thong-khong-khi-keheal-f4-14.jpg',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option8' }],
+        },
+        shippingMethods: { connect: [{ id: 'method1' }] },
+      },
+      {
+        id: 'item72(store2)',
+        star: 5,
+        stock: 10,
+        name: 'Ấm điện siêu tốc',
+        description: 'This is description.',
+        expired: new Date(),
+        images: [
+          'https://bizweb.dktcdn.net/100/328/889/files/am-sieu-toc-philips-hd9350-cong-suat-2200w-dung-tich-17l.jpg?v=1574413018788',
+        ],
+        store: { connect: { id: 'store2(user2)' } },
+        category: { connect: { id: 'category6' } },
+        options: {
+          connect: [{ id: 'option9' }],
         },
         shippingMethods: { connect: [{ id: 'method1' }] },
       },
@@ -901,7 +1851,7 @@ export class PrismaService extends PrismaClient {
             },
             {
               amount: 1,
-              item: { connect: { id: 'item2(store2)' } },
+              item: { connect: { id: 'item2(store1)' } },
             },
           ],
         },
@@ -953,7 +1903,7 @@ export class PrismaService extends PrismaClient {
           create: [
             {
               amount: 2,
-              item: { connect: { id: 'item2(store2)' } },
+              item: { connect: { id: 'item14(store2)' } },
             },
           ],
         },
@@ -995,15 +1945,15 @@ export class PrismaService extends PrismaClient {
           create: [
             {
               amount: 2,
-              item: { connect: { id: 'item11(store1)' } },
+              item: { connect: { id: 'item8(store1)' } },
             },
             {
               amount: 3,
-              item: { connect: { id: 'item12(store1)' } },
+              item: { connect: { id: 'item9(store1)' } },
             },
             {
               amount: 1,
-              item: { connect: { id: 'item13(store1)' } },
+              item: { connect: { id: 'item10(store1)' } },
             },
           ],
         },

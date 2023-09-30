@@ -6,36 +6,42 @@ import { PrismaService } from '../prisma/prisma.service';
 export class UsersService {
   constructor(private prisma: PrismaService) {}
 
+  // Done
   async getAll() {
     return await this.prisma.user.findMany({
-      include: {
-        cartElements: {
-          select: {
-            amount: true,
-            item: {
-              include: {
-                store: true,
-              },
-            },
-          },
-        },
+      select: {
+        id: true,
+        goodAction: true,
+        email: true,
+        name: true,
+        phone: true,
+        address: true,
+        avatar: true,
+        background: true,
       },
     });
   }
 
-  async getMe(id: string) {
+  // Done
+  async getMe({ userId }: { userId: string }) {
     return await this.prisma.user.findUnique({
       where: {
-        id: id,
+        id: userId,
       },
-      include: {
-        ownStore: true,
+      select: {
+        id: true,
+        ownStore: {
+          select: {
+            id: true,
+          },
+        },
         cartElements: {
           select: {
             amount: true,
             item: {
-              include: {
-                store: true,
+              select: {
+                id: true,
+                storeId: true,
               },
             },
           },
@@ -45,7 +51,15 @@ export class UsersService {
   }
 
   // Done
-  async updateCart(userId: string, itemId: string, amount: number) {
+  async updateCart({
+    userId,
+    itemId,
+    amount,
+  }: {
+    userId: string;
+    itemId: string;
+    amount: number;
+  }) {
     if (!amount) {
       return await this.prisma.cartElement.delete({
         where: {

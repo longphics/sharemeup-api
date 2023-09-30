@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, BadRequestException } from '@nestjs/common';
 
 import { StoresService } from './stores.service';
 
@@ -6,8 +6,13 @@ import { StoresService } from './stores.service';
 export class StoresController {
   constructor(private storesService: StoresService) {}
 
+  // Done
   @Get()
   async getAll() {
-    return await this.storesService.getAll();
+    try {
+      return await this.storesService.getAll();
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
   }
 }
