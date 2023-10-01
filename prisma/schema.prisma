@@ -33,7 +33,7 @@ model User {
   comments      Comment[]
   createPosts   Post[]         @relation("Create")
   likePosts     Post[]         @relation("Like")
-  unlikePosts   Post[]         @relation("Unlike")
+  dislikePosts  Post[]         @relation("Dislike")
   savePosts     Post[]         @relation("Save")
   giveGifts     Gift[]         @relation("Give")
   receiveGifts  Gift[]         @relation("Receive")
@@ -212,7 +212,7 @@ model Post {
   createUser   User      @relation(name: "Create", fields: [createUserId], references: [id])
   createUserId String
   likeUsers    User[]    @relation("Like")
-  unlikeUsers  User[]    @relation("Unlike")
+  dislikeUsers User[]    @relation("Dislike")
   saveUsers    User[]    @relation("Save")
   comments     Comment[]
   gifts        Gift[]

@@ -243,7 +243,7 @@ CREATE TABLE "_Like" (
 );
 
 -- CreateTable
-CREATE TABLE "_Unlike" (
+CREATE TABLE "_Dislike" (
     "A" TEXT NOT NULL,
     "B" TEXT NOT NULL
 );
@@ -303,10 +303,10 @@ CREATE UNIQUE INDEX "_Like_AB_unique" ON "_Like"("A", "B");
 CREATE INDEX "_Like_B_index" ON "_Like"("B");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "_Unlike_AB_unique" ON "_Unlike"("A", "B");
+CREATE UNIQUE INDEX "_Dislike_AB_unique" ON "_Dislike"("A", "B");
 
 -- CreateIndex
-CREATE INDEX "_Unlike_B_index" ON "_Unlike"("B");
+CREATE INDEX "_Dislike_B_index" ON "_Dislike"("B");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "_Save_AB_unique" ON "_Save"("A", "B");
@@ -426,10 +426,10 @@ ALTER TABLE "_Like" ADD CONSTRAINT "_Like_A_fkey" FOREIGN KEY ("A") REFERENCES "
 ALTER TABLE "_Like" ADD CONSTRAINT "_Like_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_Unlike" ADD CONSTRAINT "_Unlike_A_fkey" FOREIGN KEY ("A") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_Dislike" ADD CONSTRAINT "_Dislike_A_fkey" FOREIGN KEY ("A") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_Unlike" ADD CONSTRAINT "_Unlike_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_Dislike" ADD CONSTRAINT "_Dislike_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_Save" ADD CONSTRAINT "_Save_A_fkey" FOREIGN KEY ("A") REFERENCES "Post"("id") ON DELETE CASCADE ON UPDATE CASCADE;

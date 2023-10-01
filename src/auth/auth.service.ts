@@ -1,4 +1,8 @@
-import { Injectable, ForbiddenException } from '@nestjs/common';
+import {
+  Injectable,
+  ForbiddenException,
+  ConflictException,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Prisma } from '@prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
@@ -16,18 +20,41 @@ export class AuthService {
     private jwt: JwtService,
   ) {}
 
-  async signup(dto: AuthDto) {
-    const hash = await argon.hash(dto.password);
+  async signup({
+    email,
+    name,
+    phone,
+    address,
+    password,
+  }: {
+    email: string;
+    name: string;
+    phone: string;
+    address: string;
+    password: string;
+  }) {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    if (user) {
+      throw new ConflictException('Email already exists');
+    }
+
+    const hash = await argon.hash(password);
 
     const newUserData: Prisma.UserCreateInput = {
-      email: dto.email,
+      email,
       hash: hash,
-      name: 'New User',
-      phone: '0123456789',
-      address: 'Ho Chi Minh',
+      name,
+      phone,
+      address,
       avatar:
         'https://nhadepso.com/wp-content/uploads/2023/03/loa-mat-voi-101-hinh-anh-avatar-meo-cute-dang-yeu-dep-mat_3.jpg',
-      background: 'www.google.com',
+      background:
+        'https://antimatter.vn/wp-content/uploads/2022/05/background-dep-1.jpg',
     };
 
     try {
