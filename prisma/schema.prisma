@@ -205,7 +205,6 @@ model ShippingMethod {
 model Post {
   id       String   @id @default(cuid())
   createAt DateTime @default(now())
-  type     String
   text     String
   images   String[]
 

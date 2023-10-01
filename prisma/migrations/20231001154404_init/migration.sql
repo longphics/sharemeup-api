@@ -167,7 +167,6 @@ CREATE TABLE "ShippingMethod" (
 CREATE TABLE "Post" (
     "id" TEXT NOT NULL,
     "createAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "type" TEXT NOT NULL,
     "text" TEXT NOT NULL,
     "images" TEXT[],
     "createUserId" TEXT NOT NULL,

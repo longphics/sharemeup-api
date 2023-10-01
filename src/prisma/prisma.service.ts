@@ -1042,6 +1042,67 @@ export class PrismaService extends PrismaClient {
     return result;
   }
 
+  private async _createPosts() {
+    const posts: Prisma.PostCreateInput[] = [
+      {
+        id: 'post1(user1)',
+        text: 'This is caption of my post',
+        images: [
+          'https://truyenhinhnghean.vn/file/4028eaa46735a26101673a4df345003c/4028eaa467f477c80167f4aa053f0c68/102020/sao-viet-dong-loat-keu-goi-nguoi-dan-ung-ho-mien-trung-bi-lu-lut-7db20db2_20201013144440.jpg?width=1200&height=-&type=resize',
+        ],
+        createUser: { connect: { id: 'user1' } },
+      },
+      {
+        id: 'post2(user2)',
+        text: 'This is caption of my post',
+        images: [
+          'https://truyenhinhnghean.vn/file/4028eaa46735a26101673a4df345003c/4028eaa467f477c80167f4aa053f0c68/102020/sao-viet-dong-loat-keu-goi-nguoi-dan-ung-ho-mien-trung-bi-lu-lut-7db20db2_20201013144440.jpg?width=1200&height=-&type=resize',
+        ],
+        createUser: { connect: { id: 'user2' } },
+      },
+      {
+        id: 'post3(user3)',
+        text: 'This is caption of my post',
+        images: [
+          'https://truyenhinhnghean.vn/file/4028eaa46735a26101673a4df345003c/4028eaa467f477c80167f4aa053f0c68/102020/sao-viet-dong-loat-keu-goi-nguoi-dan-ung-ho-mien-trung-bi-lu-lut-7db20db2_20201013144440.jpg?width=1200&height=-&type=resize',
+        ],
+        createUser: { connect: { id: 'user3' } },
+      },
+      {
+        id: 'post4(user1)',
+        text: 'This is caption of my post',
+        images: [
+          'https://truyenhinhnghean.vn/file/4028eaa46735a26101673a4df345003c/4028eaa467f477c80167f4aa053f0c68/102020/sao-viet-dong-loat-keu-goi-nguoi-dan-ung-ho-mien-trung-bi-lu-lut-7db20db2_20201013144440.jpg?width=1200&height=-&type=resize',
+        ],
+        createUser: { connect: { id: 'user1' } },
+      },
+      {
+        id: 'post5(user2)',
+        text: 'This is caption of my post',
+        images: [
+          'https://truyenhinhnghean.vn/file/4028eaa46735a26101673a4df345003c/4028eaa467f477c80167f4aa053f0c68/102020/sao-viet-dong-loat-keu-goi-nguoi-dan-ung-ho-mien-trung-bi-lu-lut-7db20db2_20201013144440.jpg?width=1200&height=-&type=resize',
+        ],
+        createUser: { connect: { id: 'user2' } },
+      },
+      {
+        id: 'post6(user3)',
+        text: 'This is caption of my post',
+        images: [
+          'https://truyenhinhnghean.vn/file/4028eaa46735a26101673a4df345003c/4028eaa467f477c80167f4aa053f0c68/102020/sao-viet-dong-loat-keu-goi-nguoi-dan-ung-ho-mien-trung-bi-lu-lut-7db20db2_20201013144440.jpg?width=1200&height=-&type=resize',
+        ],
+        createUser: { connect: { id: 'user3' } },
+      },
+    ];
+
+    const result: any[] = [];
+
+    for (const post of posts) {
+      result.push(await this.post.create({ data: post }));
+    }
+
+    return result;
+  }
+
   async init() {
     const users = await this._createUsers();
     const stores = await this._createStores();
@@ -1051,6 +1112,7 @@ export class PrismaService extends PrismaClient {
     const items = await this._createItems();
     const cartElements = await this._createCartElements();
     const orderElements = await this._createOrderElements();
+    const posts = await this._createPosts();
 
     return {
       users,
