@@ -33,13 +33,9 @@ export class OrdersController {
     try {
       const userId = user.id;
       const storeId = dto.storeId;
-      const phone = dto.phone;
-      const address = dto.address;
       return await this.ordersService.create({
         userId,
         storeId,
-        phone,
-        address,
       });
     } catch (err) {
       throw new BadRequestException(err);

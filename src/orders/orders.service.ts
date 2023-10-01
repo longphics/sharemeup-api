@@ -14,8 +14,6 @@ export class OrdersService {
         createAt: true,
         status: true,
         note: true,
-        phone: true,
-        address: true,
         userId: true,
         storeId: true,
         orderElements: {
@@ -30,17 +28,7 @@ export class OrdersService {
   }
 
   // Done
-  async create({
-    userId,
-    storeId,
-    phone,
-    address,
-  }: {
-    userId: string;
-    storeId: string;
-    phone: string;
-    address: string;
-  }) {
+  async create({ userId, storeId }: { userId: string; storeId: string }) {
     const cartElements = await this.prisma.cartElement.findMany({
       where: {
         userId: userId,
@@ -62,8 +50,6 @@ export class OrdersService {
     const newOrder = {
       status: 'Waiting',
       note: 'This is note',
-      phone,
-      address,
       user: { connect: { id: userId } },
       store: { connect: { id: storeId } },
       orderElements: {
