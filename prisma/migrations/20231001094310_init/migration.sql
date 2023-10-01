@@ -52,6 +52,7 @@ CREATE TABLE "Store" (
     "avatar" TEXT NOT NULL,
     "background" TEXT NOT NULL,
     "address" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
     "ownerId" TEXT NOT NULL,
 
     CONSTRAINT "Store_pkey" PRIMARY KEY ("id")

@@ -75,6 +75,7 @@ model Store {
   avatar     String
   background String
   address    String
+  phone      String
 
   donations Donation[]
   owner     User       @relation(name: "Own", fields: [ownerId], references: [id])

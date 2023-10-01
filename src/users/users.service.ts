@@ -102,4 +102,28 @@ export class UsersService {
       });
     }
   }
+
+  // Done
+  async editProfile({
+    userId,
+    name,
+    phone,
+    address,
+  }: {
+    userId: string;
+    name: string;
+    phone: string;
+    address: string;
+  }) {
+    return await this.prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        name,
+        phone,
+        address,
+      },
+    });
+  }
 }

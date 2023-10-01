@@ -72,6 +72,7 @@ export class PrismaService extends PrismaClient {
         background:
           'https://images.template.net/108716/food-blog-background-m1w5n.jpg',
         address: 'Ho Chi Minh',
+        phone: '0908212295',
         owner: { connect: { id: 'user1' } },
       },
       {
@@ -84,6 +85,7 @@ export class PrismaService extends PrismaClient {
         background:
           'https://images.template.net/108716/food-blog-background-m1w5n.jpg',
         address: 'Ho Chi Minh',
+        phone: '0908212295',
         owner: { connect: { id: 'user2' } },
       },
     ];

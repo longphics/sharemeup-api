@@ -52,4 +52,25 @@ export class UsersController {
       throw new BadRequestException(err);
     }
   }
+
+  // Done
+  @UseGuards(JwtGuard)
+  @Post('edit')
+  async editProfile(@GetUser() user: User, @Body() dto: any) {
+    try {
+      const userId = user.id;
+      const name = dto.name;
+      const phone = dto.phone;
+      const address = dto.address;
+
+      return await this.usersService.editProfile({
+        userId,
+        name,
+        phone,
+        address,
+      });
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
+  }
 }

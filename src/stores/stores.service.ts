@@ -19,7 +19,32 @@ export class StoresService {
         avatar: true,
         background: true,
         address: true,
+        phone: true,
         ownerId: true,
+      },
+    });
+  }
+
+  // Done
+  async editStore({
+    userId,
+    name,
+    phone,
+    address,
+  }: {
+    userId: string;
+    name: string;
+    phone: string;
+    address: string;
+  }) {
+    return await this.prisma.store.update({
+      where: {
+        ownerId: userId,
+      },
+      data: {
+        name,
+        phone,
+        address,
       },
     });
   }
