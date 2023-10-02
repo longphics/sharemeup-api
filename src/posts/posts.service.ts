@@ -38,4 +38,25 @@ export class PostsService {
       },
     });
   }
+
+  // Done
+  async create({
+    userId,
+    description,
+    imageUri,
+  }: {
+    userId: string;
+    description: string;
+    imageUri: string;
+  }) {
+    const newPost = {
+      text: description,
+      images: [imageUri],
+      createUser: { connect: { id: userId } },
+    };
+
+    return await this.prisma.post.create({
+      data: newPost,
+    });
+  }
 }
