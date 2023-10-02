@@ -75,4 +75,28 @@ export class OrdersService {
       },
     });
   }
+
+  // Done
+  async sendFeedback({
+    itemId,
+    userId,
+    star,
+    text,
+  }: {
+    itemId: string;
+    userId: string;
+    star: number;
+    text: string;
+  }) {
+    const newFeedback = {
+      text,
+      star,
+      user: { connect: { id: userId } },
+      item: { connect: { id: itemId } },
+    };
+
+    return await this.prisma.feedback.create({
+      data: newFeedback,
+    });
+  }
 }

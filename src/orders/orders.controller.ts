@@ -46,4 +46,20 @@ export class OrdersController {
   async changeOrderStatus(@Body() dto: any) {
     return await this.ordersService.changeOrderStatus(dto);
   }
+
+  // Done
+  @Post('feedback')
+  async sendFeedback(@Body() dto: any) {
+    try {
+      const props = {
+        itemId: dto.itemId,
+        userId: dto.userId,
+        star: parseInt(dto.star),
+        text: dto.text,
+      };
+      return await this.ordersService.sendFeedback(props);
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
+  }
 }
