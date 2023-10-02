@@ -25,7 +25,8 @@ export class PrismaService extends PrismaClient {
         address: 'Ho Chi Minh',
         avatar:
           'https://nhadepso.com/wp-content/uploads/2023/03/loa-mat-voi-101-hinh-anh-avatar-meo-cute-dang-yeu-dep-mat_3.jpg',
-        background: 'www.google.com',
+        background:
+          'https://antimatter.vn/wp-content/uploads/2022/05/background-dep-1.jpg',
       },
       {
         id: 'user2',
@@ -36,7 +37,8 @@ export class PrismaService extends PrismaClient {
         address: 'Ho Chi Minh',
         avatar:
           'https://nhadepso.com/wp-content/uploads/2023/03/loa-mat-voi-101-hinh-anh-avatar-meo-cute-dang-yeu-dep-mat_2.jpg',
-        background: 'www.google.com',
+        background:
+          'https://antimatter.vn/wp-content/uploads/2022/05/background-dep-1.jpg',
       },
       {
         id: 'user3',
@@ -47,7 +49,8 @@ export class PrismaService extends PrismaClient {
         address: 'Ho Chi Minh',
         avatar:
           'https://khoinguonsangtao.vn/wp-content/uploads/2022/08/hinh-nen-meo-hai-huoc-deo-kinh.jpg',
-        background: 'www.google.com',
+        background:
+          'https://antimatter.vn/wp-content/uploads/2022/05/background-dep-1.jpg',
       },
     ];
 
