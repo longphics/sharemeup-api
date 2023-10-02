@@ -67,4 +67,18 @@ export class GiftsController {
       throw new BadRequestException(err);
     }
   }
+
+  // Done
+  @Post('status')
+  async changeGiftStatus(@Body() dto: any) {
+    try {
+      const props = {
+        giftId: dto.giftId,
+        status: dto.status,
+      };
+      return await this.giftsService.changeGiftStatus(props);
+    } catch (err) {
+      throw new BadRequestException(err);
+    }
+  }
 }

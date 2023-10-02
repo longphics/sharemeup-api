@@ -57,4 +57,22 @@ export class GiftsService {
       data: newGift,
     });
   }
+
+  // Done
+  async changeGiftStatus({
+    giftId,
+    status,
+  }: {
+    giftId: string;
+    status: string;
+  }) {
+    return await this.prisma.gift.update({
+      where: {
+        id: giftId,
+      },
+      data: {
+        status,
+      },
+    });
+  }
 }
