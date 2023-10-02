@@ -23,4 +23,38 @@ export class GiftsService {
       },
     });
   }
+
+  // Done
+  async create({
+    description,
+    imageUri,
+    name,
+    amount,
+    postId,
+    giverId,
+    receiverId,
+  }: {
+    description: string;
+    imageUri: string;
+    name: string;
+    amount: number;
+    postId: string;
+    giverId: string;
+    receiverId: string;
+  }) {
+    const newGift = {
+      status: 'Waiting',
+      description,
+      images: [imageUri],
+      name,
+      amount,
+      post: { connect: { id: postId } },
+      giveUser: { connect: { id: giverId } },
+      receiveUser: { connect: { id: receiverId } },
+    };
+
+    return await this.prisma.gift.create({
+      data: newGift,
+    });
+  }
 }
