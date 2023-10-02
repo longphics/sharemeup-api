@@ -192,6 +192,8 @@ CREATE TABLE "Gift" (
     "status" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "images" TEXT[],
+    "name" TEXT NOT NULL,
+    "amount" INTEGER NOT NULL,
     "postId" TEXT NOT NULL,
     "giveUserId" TEXT NOT NULL,
     "receiveUserId" TEXT NOT NULL,

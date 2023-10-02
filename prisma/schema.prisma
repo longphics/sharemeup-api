@@ -234,6 +234,8 @@ model Gift {
   status      String
   description String
   images      String[]
+  name        String
+  amount      Int
 
   post          Post   @relation(fields: [postId], references: [id])
   postId        String

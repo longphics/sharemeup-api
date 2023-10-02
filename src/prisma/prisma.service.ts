@@ -1103,6 +1103,97 @@ export class PrismaService extends PrismaClient {
     return result;
   }
 
+  private async _createGifts() {
+    const gifts: Prisma.GiftCreateInput[] = [
+      {
+        id: 'gift1(user1,user3,post3)',
+        status: 'Waiting',
+        description: 'This is description',
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/719875171574779.6470b6ef6209f.jpg',
+        ],
+        name: 'Bộ quần áo bé trai',
+        amount: 2,
+        post: { connect: { id: 'post3(user3)' } },
+        giveUser: { connect: { id: 'user1' } },
+        receiveUser: { connect: { id: 'user3' } },
+      },
+      {
+        id: 'gift2(user1,user3,post3)',
+        status: 'Taking',
+        description: 'This is description',
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/719875171574779.6470b6ef6209f.jpg',
+        ],
+        name: 'Bộ quần áo bé trai',
+        amount: 2,
+        post: { connect: { id: 'post3(user3)' } },
+        giveUser: { connect: { id: 'user1' } },
+        receiveUser: { connect: { id: 'user3' } },
+      },
+      {
+        id: 'gift3(user1,user3,post3)',
+        status: 'Received',
+        description: 'This is description',
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/719875171574779.6470b6ef6209f.jpg',
+        ],
+        name: 'Bộ quần áo bé trai',
+        amount: 2,
+        post: { connect: { id: 'post3(user3)' } },
+        giveUser: { connect: { id: 'user1' } },
+        receiveUser: { connect: { id: 'user3' } },
+      },
+      {
+        id: 'gift4(user1,user3,post3)',
+        status: 'Canceled',
+        description: 'This is description',
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/719875171574779.6470b6ef6209f.jpg',
+        ],
+        name: 'Bộ quần áo bé trai',
+        amount: 2,
+        post: { connect: { id: 'post3(user3)' } },
+        giveUser: { connect: { id: 'user1' } },
+        receiveUser: { connect: { id: 'user3' } },
+      },
+      {
+        id: 'gift5(user2,user3,post3)',
+        status: 'Waiting',
+        description: 'This is description',
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/719875171574779.6470b6ef6209f.jpg',
+        ],
+        name: 'Bộ quần áo bé trai',
+        amount: 2,
+        post: { connect: { id: 'post6(user3)' } },
+        giveUser: { connect: { id: 'user2' } },
+        receiveUser: { connect: { id: 'user3' } },
+      },
+      {
+        id: 'gift6(user2,user3,post6)',
+        status: 'Received',
+        description: 'This is description',
+        images: [
+          'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/719875171574779.6470b6ef6209f.jpg',
+        ],
+        name: 'Bộ quần áo bé trai',
+        amount: 2,
+        post: { connect: { id: 'post6(user3)' } },
+        giveUser: { connect: { id: 'user2' } },
+        receiveUser: { connect: { id: 'user3' } },
+      },
+    ];
+
+    const result: any[] = [];
+
+    for (const gift of gifts) {
+      result.push(await this.gift.create({ data: gift }));
+    }
+
+    return result;
+  }
+
   async init() {
     const users = await this._createUsers();
     const stores = await this._createStores();
@@ -1113,6 +1204,7 @@ export class PrismaService extends PrismaClient {
     const cartElements = await this._createCartElements();
     const orderElements = await this._createOrderElements();
     const posts = await this._createPosts();
+    const gifts = await this._createGifts();
 
     return {
       users,
@@ -1123,6 +1215,8 @@ export class PrismaService extends PrismaClient {
       items,
       cartElements,
       orderElements,
+      posts,
+      gifts,
     };
   }
 }
