@@ -66,6 +66,28 @@ export class OrdersService {
     const orderId = dto.orderId;
     const newStatus = dto.status;
 
+    /////
+    if (newStatus === 'Received') {
+      const order = await this.prisma.order.findUnique({
+        where: {
+          id: orderId,
+        },
+        select: {
+          storeId: true,
+          orderElements: true,
+        },
+      });
+
+      await this.prisma.store.update({
+        where: {
+          id: order.storeId,
+        },
+        data: {
+          sold: { increment: order.orderElements.length },
+        },
+      });
+    }
+
     return await this.prisma.order.update({
       where: {
         id: orderId,
